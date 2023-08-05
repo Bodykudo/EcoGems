@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { client, urlFor } from '../client';
-import { gemDetailsMoreGemsQuery, gemDetailsQuery } from '../utils/data';
+import { gemDetailsMoreGemsQuery, gemDetailsQuery } from '../utils/api';
 import GemInfo from '../components/details/GemInfo';
 import Comments from '../components/details/Comments';
 import AddComment from '../components/details/AddComment';
@@ -20,7 +20,6 @@ function GemDetails({ user }) {
     if (query) {
       client.fetch(query).then((data) => {
         setGemDetails(data[0]);
-        console.log(data[0]);
         if (data[0]) {
           setIsLoadingMore(true);
           const queryMore = gemDetailsMoreGemsQuery(data[0]);
@@ -46,11 +45,11 @@ function GemDetails({ user }) {
 
   return (
     <>
-      <div className="m-auto flex max-w-[150rem] flex-col items-center rounded-[3.2rem] bg-white xl:flex-row">
+      <div className="m-auto flex max-w-[150rem] flex-col items-center rounded-[3.2rem] bg-white dark:bg-gray-800 xl:flex-row">
         <div className="flex flex-initial items-center justify-center md:items-start xl:w-[40%]">
           <img
             src={gemDetails?.image && urlFor(gemDetails.image).url()}
-            className="rounded-b-lg rounded-t-3xl"
+            className="rounded-b-lg rounded-t-3xl dark:opacity-70"
             alt={gemDetails?.about}
           />
         </div>

@@ -1,7 +1,7 @@
 const activeBtnStyles =
-  'bg-green-500 text-white font-semibold mr-4 p-2 rounded-full w-20 outline-none';
+  'bg-green-500 dark:bg-darkGreen text-white font-semibold mr-4 p-2 rounded-full w-20 outline-none dark:text-gray-300 cursor-default';
 const notActiveBtnStyles =
-  'bg-secondaryColor text-black font-semibold mr-4 p-2 rounded-full w-20 outline-none';
+  'bg-secondaryColor text-black font-semibold mr-4 p-2 rounded-full w-20 outline-none dark:bg-[#D1D1D1]';
 
 function ProfileNav({ activeButton, setActiveButton, setText }) {
   return (

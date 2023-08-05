@@ -62,17 +62,17 @@ function AddComment({ user, gemId, gemDetails, setGemDetails }) {
     <div className="mt-6 flex flex-wrap items-center justify-center gap-3">
       <Link
         to={`/user-profile/${user?._id}`}
-        className="flex w-fit items-center gap-2 rounded-lg bg-gray-100 p-1 transition-all duration-200 hover:shadow-md"
+        className="flex w-fit items-center gap-2 rounded-lg bg-gray-100 p-1 transition-all duration-200 hover:shadow-md dark:bg-gray-900"
       >
         <img
           src={user?.image}
           alt="user-profile"
-          className="h-10 w-10 rounded-full object-cover"
+          className="h-10 w-10 rounded-full object-cover dark:opacity-70"
         />
       </Link>
       <textarea
         type="text"
-        className="flex-1 resize-none rounded-2xl border-2 border-gray-100 px-1 py-2 outline-none transition-all duration-200 focus:border-gray-300"
+        className="flex-1 resize-none rounded-2xl border-2 border-gray-100 px-1 py-2 outline-none transition-all duration-200 focus:border-gray-300 dark:border-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:focus:border-gray-400"
         value={comment}
         onChange={(e) => setComment(e.target.value)}
         placeholder="Add your comment.."
@@ -80,8 +80,10 @@ function AddComment({ user, gemId, gemDetails, setGemDetails }) {
       />
       <button
         type="button"
-        className={`rounded-full bg-green-500 px-6 py-2 text-base font-semibold text-white outline-none ${
-          (isCommenting || !comment) && 'cursor-not-allowed opacity-70'
+        className={`rounded-full bg-green-500 px-6 py-2 text-base font-semibold text-white outline-none transition-all duration-200 dark:bg-darkGreen ${
+          isCommenting || !comment
+            ? 'cursor-not-allowed opacity-70'
+            : 'hover:opacity-70'
         }`}
         onClick={addComment}
       >

@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import { GoogleOAuthProvider } from '@react-oauth/google';
 import { client } from './client';
-import { userQuery } from './utils/data';
+import { userQuery } from './utils/api';
 import { fetchUser } from './utils/fetchUser';
 
 import AppLayout from './components/layout/AppLayout';

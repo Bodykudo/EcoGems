@@ -234,7 +234,5 @@ export const categories = [
 ];
 
 const lastCategory = categories.pop();
-console.log({ lastCategory });
 categories.sort((a, b) => a.name.localeCompare(b.name));
 categories.push(lastCategory);
-console.log({ categories });

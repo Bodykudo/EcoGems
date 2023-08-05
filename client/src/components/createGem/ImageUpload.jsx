@@ -45,14 +45,16 @@ function ImageUpload({
   }
 
   return (
-    <div className="flex w-full flex-0.7 bg-secondaryColor p-3">
-      <div className="flex h-340 w-full flex-col items-center justify-center border-2 border-dotted border-gray-300 p-3 lg:h-[60vh]">
+    <div className="flex w-full flex-0.7 bg-secondaryColor p-3 dark:bg-gray-900">
+      <div className="flex h-340 w-full flex-col items-center justify-center border-2 border-dotted border-gray-300 p-3 dark:border-gray-800 lg:h-[70vh]">
         {isLoading && <Spinner />}
         {wrongImageType && (
-          <p className="text-lg text-red-500">Wrong file type</p>
+          <p className="text-lg text-red-500 dark:text-red-600">
+            Wrong file type
+          </p>
         )}
         {fields && (
-          <p className="text-lg text-red-500">
+          <p className="text-lg text-red-500 dark:text-red-600">
             Please upload an image for your gem
           </p>
         )}
@@ -63,7 +65,7 @@ function ImageUpload({
                 isLoading ? 'cursor-not-allowed' : 'cursor-pointer'
               }`}
             >
-              <div className="flex flex-col items-center justify-center">
+              <div className="flex flex-col items-center justify-center dark:text-gray-300">
                 <p className="font-bold">
                   <AiOutlineCloudUpload size={60} />
                 </p>
@@ -87,11 +89,11 @@ function ImageUpload({
             <img
               src={imageAsset?.url}
               alt="uploaded-pic"
-              className="h-full w-full"
+              className="h-full w-full dark:opacity-80"
             />
             <button
               type="button"
-              className="absolute bottom-3 right-3 cursor-pointer rounded-full bg-white p-3 text-xl outline-none transition-all duration-500 hover:shadow-md"
+              className="absolute bottom-3 right-3 cursor-pointer rounded-full bg-white p-3 text-xl outline-none transition-all duration-500 hover:shadow-md dark:bg-gray-800 dark:text-gray-300"
               onClick={() => setImageAsset(null)}
             >
               <MdDelete />

@@ -9,11 +9,11 @@ function Header({ user, setToggleSidebar }) {
       <div className="flex w-full flex-row items-center justify-between p-2 shadow-md">
         <HiMenu
           fontSize={40}
-          className="cursor-pointer"
+          className="cursor-pointer dark:text-gray-300"
           onClick={() => setToggleSidebar(true)}
         />
         <Link to="/">
-          <img src={logo} alt="logo" className="w-52" />
+          <img src={logo} alt="logo" className="w-52 dark:opacity-70" />
         </Link>
 
         {user ? (
@@ -21,13 +21,13 @@ function Header({ user, setToggleSidebar }) {
             <img
               src={user?.image}
               alt="user-pic"
-              className="h-10 w-10 rounded-full"
+              className="h-10 w-10 rounded-full dark:opacity-70"
             />
           </Link>
         ) : (
           <Link
             to="/login"
-            className="transition-bg flex h-12 w-12 items-center justify-center rounded-lg bg-red-500 text-white duration-150 ease-in-out hover:opacity-80 md:w-14"
+            className="transition-bg flex h-12 w-12 items-center justify-center rounded-lg bg-green-500 text-white duration-150 ease-in-out hover:opacity-80 dark:bg-darkGreen dark:text-gray-300 md:w-14"
           >
             <BiLogIn size={34} />
           </Link>

@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { client } from '../client';
-import { feedQuery, searchQuery } from '../utils/data';
+import { feedQuery, searchQuery } from '../utils/api';
 import MasonryLayout from '../components/ui/MasonryLayout';
 import Spinner from '../components/ui/Spinner';
 
@@ -33,10 +33,13 @@ function Feed() {
       </div>
     );
 
-  if (!gems?.length) return <h2>No gems available</h2>;
+  if (!gems?.length)
+    return <h2 className="dark:text-gray-300">No gems available</h2>;
 
   return (
-    <div>{gems.length ? <MasonryLayout gems={gems} /> : 'No data to show'}</div>
+    <div className="dark:text-gray-300">
+      {gems.length ? <MasonryLayout gems={gems} /> : 'No data to show'}
+    </div>
   );
 }
 

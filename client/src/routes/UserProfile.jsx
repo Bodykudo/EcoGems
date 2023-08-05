@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { client } from '../client';
-import { userQuery } from '../utils/data';
+import { userQuery } from '../utils/api';
 import { fetchUser } from '../utils/fetchUser';
 import Banner from '../components/profile/Banner';
 import ProfileNav from '../components/profile/ProfileNav';

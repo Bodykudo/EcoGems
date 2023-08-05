@@ -46,6 +46,7 @@ module.exports = {
       backgroundColor: {
         mainColor: '#FBF8F9',
         secondaryColor: '#F0F0F0',
+        darkGreen: '#1F7042',
         lightBlack: 'rgba(0, 0, 0, 0.85)',
         blackOverlay: 'rgba(0, 0 ,0 ,0.7)',
       },

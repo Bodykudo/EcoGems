@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { client } from '../../client';
-import { userCreatedGemsQuery, userSavedGemsQuery } from '../../utils/data';
+import { userCreatedGemsQuery, userSavedGemsQuery } from '../../utils/api';
 import MasonryLayout from '../ui/MasonryLayout';
 
 function ProfileGems({ text, userId }) {

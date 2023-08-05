@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { client } from '../../client';
-import { categories } from '../../utils/data';
+import { categories } from '../../utils/api';
 
 function CreateGemForm({ user, imageAsset, isLoading, setFields }) {
   const [isSaving, setIsSaving] = useState(false);
@@ -47,28 +47,28 @@ function CreateGemForm({ user, imageAsset, isLoading, setFields }) {
   }
 
   return (
-    <div className="m5-5 flex w-full flex-1 flex-col gap-6 lg:pl-5">
+    <div className="m5-5 flex w-full flex-1 flex-col gap-6 dark:text-gray-300 lg:pl-5">
       <input
         type="text"
         id="title"
         placeholder="Add your title here"
         disabled={isSaving}
-        className="border-b-2 border-gray-200 p-2 text-2xl font-bold outline-none sm:text-3xl"
+        className="border-b-2 border-gray-200 p-2 text-2xl font-bold outline-none dark:border-gray-700 dark:bg-gray-900 sm:text-3xl"
         {...register('title', {
           required: 'This field is required',
         })}
       />
       {errors?.title && (
-        <p className="-mt-5 text-sm font-semibold text-red-500">
+        <p className="-mt-5 text-sm font-semibold text-red-500 dark:text-red-600">
           {errors?.title?.message}
         </p>
       )}
 
       {user && (
-        <div className="my-2 flex items-center gap-2 rounded-lg bg-white">
+        <div className="my-2 flex items-center gap-2 rounded-lg bg-white p-1.5 dark:bg-gray-900">
           <img
             src={user?.image}
-            className="h-10 w-10 rounded-full"
+            className="h-10 w-10 rounded-full dark:opacity-70"
             alt="user-profile"
           />
           <p className="font-bold">{user?.userName}</p>
@@ -80,13 +80,13 @@ function CreateGemForm({ user, imageAsset, isLoading, setFields }) {
         id="about"
         placeholder="What is your gem about?"
         disabled={isSaving}
-        className="border-b-2 border-gray-200 p-2 text-base outline-none sm:text-lg"
+        className="border-b-2 border-gray-200 p-2 text-base outline-none dark:border-gray-700 dark:bg-gray-900 sm:text-lg"
         {...register('about', {
           required: 'This field is required',
         })}
       />
       {errors?.about && (
-        <p className="-mt-5 text-sm font-semibold text-red-500">
+        <p className="-mt-5 text-sm font-semibold text-red-500 dark:text-red-600">
           {errors?.about?.message}
         </p>
       )}
@@ -96,7 +96,7 @@ function CreateGemForm({ user, imageAsset, isLoading, setFields }) {
         id="destination"
         placeholder="Add a destination link"
         disabled={isSaving}
-        className="border-b-2 border-gray-200 p-2 text-base outline-none sm:text-lg"
+        className="border-b-2 border-gray-200 p-2 text-base outline-none dark:border-gray-700 dark:bg-gray-900 sm:text-lg"
         {...register('destination', {
           pattern: {
             value:
@@ -106,7 +106,7 @@ function CreateGemForm({ user, imageAsset, isLoading, setFields }) {
         })}
       />
       {errors?.destination && (
-        <p className="-mt-5 text-sm font-semibold text-red-500">
+        <p className="-mt-5 text-sm font-semibold text-red-500 dark:text-red-600">
           {errors?.destination?.message}
         </p>
       )}
@@ -119,20 +119,24 @@ function CreateGemForm({ user, imageAsset, isLoading, setFields }) {
           <select
             id="category"
             disabled={isSaving}
-            className={`w-4/5 rounded-md border-b-2 border-gray-200 p-2 text-base outline-none ${
+            className={`w-4/5 rounded-md border-b-2 border-gray-200 p-2 text-base outline-none dark:border-gray-700 dark:bg-gray-900 ${
               isSaving ? 'cursor-not-allowed' : 'cursor-pointer'
             }`}
             {...register('category', {
               required: 'You must select a category',
             })}
           >
-            <option value="" disabled className="sm:text-bg bg-white">
+            <option
+              value=""
+              disabled
+              className="sm:text-bg bg-white dark:bg-gray-800 dark:text-gray-300"
+            >
               Select Category
             </option>
 
             {categories.map((category) => (
               <option
-                className="outline-non border-0 bg-white text-base capitalize text-black"
+                className="outline-non border-0 bg-white text-base capitalize text-black dark:bg-gray-800 dark:text-gray-300"
                 value={category.name}
                 key={category.name}
               >
@@ -141,7 +145,7 @@ function CreateGemForm({ user, imageAsset, isLoading, setFields }) {
             ))}
           </select>
           {errors?.category && (
-            <p className="text-sm font-semibold text-red-500">
+            <p className="text-sm font-semibold text-red-500 dark:text-red-600">
               {errors?.category?.message}
             </p>
           )}
@@ -150,7 +154,7 @@ function CreateGemForm({ user, imageAsset, isLoading, setFields }) {
         <div className="mt-5 flex items-end justify-end">
           <button
             type="button"
-            className={`w-28 rounded-full bg-green-500 p-2 font-bold text-white outline-none transition-all duration-200 ${
+            className={`w-28 rounded-full bg-green-500 p-2 font-bold text-white outline-none transition-all duration-200 dark:bg-darkGreen ${
               isSaving ||
               (isLoading ? 'cursor-not-allowed opacity-50' : 'hover:opacity-80')
             }`}

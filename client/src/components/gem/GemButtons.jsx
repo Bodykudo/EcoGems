@@ -90,7 +90,7 @@ function GemButtons({
           <a
             href={`${image?.asset?.url}?dl=`}
             download
-            className="text-dark outline-non flex  h-9 w-9 items-center justify-center rounded-full bg-white text-xl opacity-75 transition-all duration-200 hover:opacity-100 hover:shadow-md"
+            className="outline-non flex  h-9 w-9 items-center justify-center rounded-full bg-white text-xl opacity-75 transition-all duration-200 hover:opacity-100 hover:shadow-md dark:bg-gray-800 dark:text-gray-300"
             onClick={(e) => e.stopPropagation()}
           >
             <MdDownloadForOffline />
@@ -101,7 +101,7 @@ function GemButtons({
           (saved ? (
             <button
               type="button"
-              className={`outline:none rounded-3xl bg-green-500 px-5 py-1 text-base font-bold text-white opacity-70 transition-all duration-200 hover:opacity-100 hover:shadow-md ${
+              className={`outline:none rounded-3xl bg-green-500 px-5 py-1 text-base font-bold text-white opacity-70 transition-all duration-200 hover:opacity-100 hover:shadow-md dark:bg-darkGreen ${
                 isSaving && 'cursor-not-allowed opacity-100'
               }`}
               onClick={handleUnsave}
@@ -112,7 +112,7 @@ function GemButtons({
           ) : (
             <button
               type="button"
-              className={`outline:none rounded-3xl bg-green-500 px-5 py-1 text-base font-bold text-white opacity-70 transition-all duration-200 hover:opacity-100 hover:shadow-md ${
+              className={`outline:none rounded-3xl bg-green-500 px-5 py-1 text-base font-bold text-white opacity-70 transition-all duration-200 hover:opacity-100 hover:shadow-md dark:bg-darkGreen ${
                 isSaving && 'cursor-not-allowed opacity-100'
               }`}
               onClick={handleSave}
@@ -129,10 +129,10 @@ function GemButtons({
             href={destination}
             target="_blank"
             rel="noreferrer"
-            className="flex items-center gap-2 rounded-full bg-white px-4 py-2 font-bold text-black opacity-70 transition-all duration-200 hover:opacity-100 hover:shadow-md"
+            className="flex items-center gap-2 rounded-full bg-white px-4 py-2 font-bold text-black opacity-70 transition-all duration-200 hover:opacity-100 hover:shadow-md dark:bg-gray-800 dark:text-gray-300"
             onClick={(e) => e.stopPropagation()}
           >
-            <BsFillArrowRightCircleFill />{' '}
+            <BsFillArrowRightCircleFill className="dark:text-gray-300" />{' '}
             {destination.replace(/^https?:\/\//i, '').length > 10
               ? `${destination.replace(/^https?:\/\//i, '').slice(0, 10)}...`
               : destination.replace(/^https?:\/\//i, '')}
@@ -142,10 +142,10 @@ function GemButtons({
         {author?._id === user?.sub && (
           <button
             type="button"
-            className="outline:none text-dark rounded-3xl bg-white p-2 text-base font-bold opacity-70 transition-all duration-200 hover:opacity-100 hover:shadow-md"
+            className="outline:none text-dark rounded-3xl bg-white p-2 text-base font-bold opacity-70 transition-all duration-200 hover:opacity-100 hover:shadow-md dark:bg-gray-800"
             onClick={handleDelete}
           >
-            <AiTwotoneDelete />
+            <AiTwotoneDelete className="dark:text-gray-300" />
           </button>
         )}
       </div>

@@ -9,7 +9,7 @@ function AppLayout({ user, searchTerm, setSearchTerm }) {
   const [toggleSidebar, setToggleSidebar] = useState(false);
 
   return (
-    <div className=" flex h-screen flex-col bg-gray-50 transition-height duration-75 ease-out md:flex-row">
+    <div className=" flex h-screen flex-col bg-gray-50 transition-height duration-75 ease-out  dark:bg-gray-900 md:flex-row">
       <div className="hidden h-screen flex-initial md:flex">
         <Sidebar user={user} closeToggle={setToggleSidebar} />
       </div>
@@ -17,11 +17,11 @@ function AppLayout({ user, searchTerm, setSearchTerm }) {
       <Header user={user} setToggleSidebar={setToggleSidebar} />
 
       {toggleSidebar && (
-        <div className="fixed z-10 h-screen w-4/5 animate-slide-in overflow-y-auto bg-white shadow-md">
+        <div className="fixed z-10 h-screen w-4/5 animate-slide-in overflow-y-auto bg-white shadow-md dark:bg-gray-800">
           <div className="absolute flex w-full items-center justify-end p-2">
             <AiFillCloseCircle
-              fontSize={30}
-              className="cursor-pointer"
+              fontSize={34}
+              className="cursor-pointer dark:text-gray-300"
               onClick={() => setToggleSidebar(false)}
             />
           </div>
@@ -30,7 +30,7 @@ function AppLayout({ user, searchTerm, setSearchTerm }) {
       )}
       <div className="h-screen flex-1 overflow-y-scroll pb-2">
         <div className="px-2 md:px-5">
-          <div className="bg-gray-50">
+          <div className="bg-gray-50 dark:bg-gray-900 ">
             <Navbar
               searchTerm={searchTerm}
               setSearchTerm={setSearchTerm}

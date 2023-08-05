@@ -26,7 +26,7 @@ function Gem({ gem: { _id, image, about, save, destination, postedBy } }) {
         className="relative w-auto cursor-zoom-in overflow-hidden rounded-lg transition-all duration-500 ease-in-out hover:shadow-lg"
       >
         <img
-          className="width-full rounded-lg"
+          className="width-full rounded-lg dark:opacity-70"
           alt={about}
           src={urlFor(image).url()}
         />
