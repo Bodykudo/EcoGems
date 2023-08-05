@@ -4,8 +4,8 @@
   "description": "EcoGems, share all your hidden gems related to nature right away.",
   "start_url": "/",
   "display": "standalone",
-  "theme_color": "#22c55e",
-  "background_color": "#f5f5f5",
+  "theme_color": "#f9fafb",
+  "background_color": "#f9fafb",
 
   "icons": [
     {
@@ -456,5 +456,11 @@
       "src": "ios/1024.png",
       "sizes": "1024x1024"
     }
-  ]
+  ],
+
+  "prefer_related_applications": false,
+  "theme_colors": {
+    "dark": "#1a202c",
+    "light": "#f9fafb"
+  }
 }
