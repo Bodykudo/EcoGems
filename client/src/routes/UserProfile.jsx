@@ -22,7 +22,7 @@ function UserProfile() {
     });
   }, [userId]);
 
-  if (!user)
+  if (!userData)
     return (
       <div className="flex h-[90vh] md:h-[95vh]">
         <Spinner message="Loading User Profile..." />
