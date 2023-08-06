@@ -22,13 +22,14 @@ function Gem({ gem: { _id, image, about, save, destination, postedBy } }) {
       <div
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
-        onClick={() => navigate(`/gem-detail/${_id}`)}
         className="relative w-auto cursor-zoom-in overflow-hidden rounded-lg transition-all duration-500 ease-in-out hover:shadow-lg"
+        onClick={() => navigate(`/gem-detail/${_id}`)}
       >
         <img
           className="width-full rounded-lg dark:opacity-70"
           alt={about}
-          src={urlFor(image).url()}
+          src={`${urlFor(image).quality(25).url()}`}
+          loading="lazy"
         />
 
         {isHovered && (
