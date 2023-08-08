@@ -3,6 +3,7 @@ import { client } from '../client';
 import { feedQuery, searchQuery } from '../utils/api';
 import MasonryLayout from '../components/ui/MasonryLayout';
 import Spinner from '../components/ui/Spinner';
+import { Helmet } from 'react-helmet-async';
 
 function Search({ searchTerm }) {
   const [gems, setGems] = useState([]);
@@ -35,7 +36,15 @@ function Search({ searchTerm }) {
   if (!gems?.length && searchTerm !== '')
     return <h2 className="mt-10 text-center text-xl">No gems found</h2>;
 
-  return <MasonryLayout gems={gems} />;
+  return (
+    <>
+      <Helmet>
+        <title>EcoGems</title>
+      </Helmet>
+
+      <MasonryLayout gems={gems} />
+    </>
+  );
 }
 
 export default Search;

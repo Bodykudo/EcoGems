@@ -13,6 +13,7 @@ import UserProfile from './routes/UserProfile';
 import PageNotFound from './routes/PageNotFound';
 import GemDetails from './routes/GemDetails';
 import CreateGem from './routes/CreateGem';
+import { Helmet } from 'react-helmet-async';
 
 function App() {
   const [user, setUser] = useState(null);
@@ -28,6 +29,21 @@ function App() {
 
   return (
     <GoogleOAuthProvider clientId={import.meta.env.VITE_GOOGLE_API_TOKEN}>
+      <Helmet>
+        <title>EcoGems</title>
+        <meta property="og:title" content="EcoGems - Homepage" />
+        <meta property="og:site_name" content="EcoGems" />
+        <meta
+          property="og:description"
+          content="Social media platform where people can share their thoughts, and images about nature, and climate issues."
+        />
+        <meta property="og:url" content="https://ecogems.vercel.app/" />
+        <meta
+          property="og:image"
+          content="https://ecogems.vercel.app/assets/logo-f2e00c4f.png"
+        />
+      </Helmet>
+
       <Routes>
         <Route
           element={

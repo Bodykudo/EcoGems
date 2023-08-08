@@ -7,6 +7,7 @@ import Banner from '../components/profile/Banner';
 import ProfileNav from '../components/profile/ProfileNav';
 import ProfileGems from '../components/profile/ProfileGems';
 import Spinner from '../components/ui/Spinner';
+import { Helmet } from 'react-helmet-async';
 
 function UserProfile() {
   const [userData, setUserData] = useState(null);
@@ -30,21 +31,33 @@ function UserProfile() {
     );
 
   return (
-    <div className="relative h-full items-center justify-center pb-2">
-      <div className="flex flex-col pb-5">
-        <div className="relative mb-7 flex flex-col">
-          <Banner user={user} userData={userData} userId={userId} />
+    <>
+      <Helmet>
+        <title>EcoGems - {userData?.userName}</title>
+        <meta property="og:title" content={`${userData?.userName} - EcoGems`} />
+        <meta
+          property="og:url"
+          content={`https://ecogems.vercel.app/${userId}`}
+        />
+        <meta property="og:image" content={userData?.image} />
+      </Helmet>
 
-          <ProfileNav
-            activeButton={activeButton}
-            setActiveButton={setActiveButton}
-            setText={setText}
-          />
+      <div className="relative h-full items-center justify-center pb-2">
+        <div className="flex flex-col pb-5">
+          <div className="relative mb-7 flex flex-col">
+            <Banner user={user} userData={userData} userId={userId} />
 
-          <ProfileGems text={text} userId={userId} />
+            <ProfileNav
+              activeButton={activeButton}
+              setActiveButton={setActiveButton}
+              setText={setText}
+            />
+
+            <ProfileGems text={text} userId={userId} />
+          </div>
         </div>
       </div>
-    </div>
+    </>
   );
 }
 

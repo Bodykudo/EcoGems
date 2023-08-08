@@ -6,6 +6,7 @@ import { client } from '../client';
 import { fetchUser } from '../utils/fetchUser';
 import shareVideo from '../assets/video.mp4';
 import logo from '../assets/logo1.png';
+import { Helmet } from 'react-helmet-async';
 
 function Login({}) {
   const navigate = useNavigate();
@@ -36,31 +37,37 @@ function Login({}) {
   }
 
   return (
-    <div className="flex h-screen flex-col items-center justify-start">
-      <div className="relative h-full w-full">
-        <video
-          src={shareVideo}
-          type="video/mp4"
-          loop
-          controls={false}
-          muted
-          autoPlay
-          className="h-full w-full object-cover"
-        />
+    <>
+      <Helmet>
+        <title>EcoGems - {gemDetails?.title}</title>
+      </Helmet>
 
-        <div className="absolute bottom-0 left-0 right-0 top-0 flex flex-col items-center justify-center bg-blackOverlay">
-          <div className="p-5">
-            <img src={logo} className="w-80" alt="logo" />
-          </div>
-          <div className="shadow-2xl">
-            <GoogleLogin
-              onSuccess={handleLogin}
-              onError={() => console.log('Error happened.')}
-            />
+      <div className="flex h-screen flex-col items-center justify-start">
+        <div className="relative h-full w-full">
+          <video
+            src={shareVideo}
+            type="video/mp4"
+            loop
+            controls={false}
+            muted
+            autoPlay
+            className="h-full w-full object-cover"
+          />
+
+          <div className="absolute bottom-0 left-0 right-0 top-0 flex flex-col items-center justify-center bg-blackOverlay">
+            <div className="p-5">
+              <img src={logo} className="w-80" alt="logo" />
+            </div>
+            <div className="shadow-2xl">
+              <GoogleLogin
+                onSuccess={handleLogin}
+                onError={() => console.log('Error happened.')}
+              />
+            </div>
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 }
 
