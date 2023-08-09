@@ -39,7 +39,7 @@ function Login({}) {
   return (
     <>
       <Helmet>
-        <title>EcoGems - {gemDetails?.title}</title>
+        <title>EcoGems</title>
       </Helmet>
 
       <div className="flex h-screen flex-col items-center justify-start">
