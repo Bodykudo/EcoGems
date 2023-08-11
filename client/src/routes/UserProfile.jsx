@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { client } from '../client';
 import { userQuery } from '../utils/api';
 import { fetchUser } from '../utils/fetchUser';
@@ -15,10 +15,15 @@ function UserProfile() {
   const [activeButton, setActiveButton] = useState('created');
   const { userId } = useParams();
   const user = fetchUser();
+  const nvigate = useNavigate();
 
   useEffect(() => {
     const query = userQuery(userId);
     client.fetch(query).then((data) => {
+      if (!data.length) {
+        nvigate('/not-found');
+      }
+
       setUserData(data[0]);
     });
   }, [userId]);

@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { client, urlFor } from '../client';
 import { gemDetailsMoreGemsQuery, gemDetailsQuery } from '../utils/api';
 import GemInfo from '../components/details/GemInfo';
@@ -14,12 +14,17 @@ function GemDetails({ user }) {
   const [gemDetails, setGemDetails] = useState(null);
   const { gemId } = useParams();
   const [isLoadingMore, setIsLoadingMore] = useState(false);
+  const nvigate = useNavigate();
 
   function fetchGemDetails() {
     const query = gemDetailsQuery(gemId);
 
     if (query) {
       client.fetch(query).then((data) => {
+        if (!data.length) {
+          nvigate('/not-found');
+        }
+
         setGemDetails(data[0]);
         if (data[0]) {
           setIsLoadingMore(true);

@@ -35,7 +35,11 @@ function Feed() {
     );
 
   if (!gems?.length)
-    return <h2 className="dark:text-gray-300">No gems available</h2>;
+    return (
+      <h2 className="mt-10 text-center text-xl dark:text-gray-300">
+        No gems available
+      </h2>
+    );
 
   return (
     <>

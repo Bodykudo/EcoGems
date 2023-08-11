@@ -34,7 +34,11 @@ function Search({ searchTerm }) {
     );
 
   if (!gems?.length && searchTerm !== '')
-    return <h2 className="mt-10 text-center text-xl">No gems found</h2>;
+    return (
+      <h2 className="mt-10 text-center text-xl dark:text-gray-300">
+        No gems found
+      </h2>
+    );
 
   return (
     <>
