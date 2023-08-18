@@ -1,13 +1,19 @@
 {
   "name": "EcoGems",
   "short_name": "EcoGems",
-  "description": "EcoGems, share all your hidden gems related to nature right away.",
+  "description": "Share all your hidden gems related to nature right away.",
   "start_url": "/",
   "display": "standalone",
   "theme_color": "#f9fafb",
-  "background_color": "#f9fafb",
+  "background_color": "#171717",
 
   "icons": [
+    {
+      "src": "maskable_icon.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
     {
       "src": "windows11/SmallTile.scale-100.png",
       "sizes": "71x71"

@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { client } from '../../client';
 import { AiOutlineCloudUpload } from 'react-icons/ai';
 import { MdDelete } from 'react-icons/md';
@@ -20,10 +20,14 @@ function ImageUpload({
   isLoading,
   setIsLoading,
 }) {
+  const dropArea = useRef();
   const [wrongImageType, setWrongImageType] = useState(false);
+  const [isDragging, setIsDragging] = useState(false);
 
-  function uploadImage(e) {
-    const selectedFile = e.target.files[0];
+  function uploadImage(e, dropped) {
+    let selectedFile;
+    if (dropped) selectedFile = e[0];
+    else selectedFile = e.target.files[0];
 
     if (validImageTypes.includes(selectedFile?.type)) {
       setWrongImageType(false);
@@ -44,8 +48,54 @@ function ImageUpload({
     }
   }
 
+  useEffect(() => {
+    const dropAreaElement = dropArea.current;
+
+    if (dropAreaElement) {
+      dropAreaElement.addEventListener('dragover', handleDragOver);
+      dropAreaElement.addEventListener('dragleave', handleDragLeave);
+      dropAreaElement.addEventListener('drop', handleDrop);
+    }
+
+    return () => {
+      if (dropAreaElement) {
+        dropAreaElement.removeEventListener('dragover', handleDragOver);
+        dropAreaElement.removeEventListener('dragleave', handleDragLeave);
+        dropAreaElement.removeEventListener('drop', handleDrop);
+      }
+    };
+  }, []);
+
+  const handleDragOver = (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    setIsDragging(true);
+  };
+
+  const handleDragLeave = (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    setIsDragging(false);
+  };
+
+  const handleDrop = (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    setIsDragging(false);
+    const { files } = e.dataTransfer;
+    console.log(files);
+    if (files?.length) {
+      uploadImage(files, true);
+    }
+  };
+
   return (
-    <div className="flex w-full flex-0.7 bg-secondaryColor p-3 dark:bg-gray-900">
+    <div
+      ref={dropArea}
+      className={`flex w-full flex-0.7 bg-secondaryColor p-3 transition-all duration-200 dark:bg-gray-900 ${
+        isDragging && 'opacity-60'
+      }`}
+    >
       <div className="flex h-340 w-full flex-col items-center justify-center border-2 border-dotted border-gray-300 p-3 dark:border-gray-800 lg:h-[70vh]">
         {isLoading && <Spinner />}
         {wrongImageType && (
@@ -69,7 +119,7 @@ function ImageUpload({
                 <p className="font-bold">
                   <AiOutlineCloudUpload size={60} />
                 </p>
-                <p className="text-lg">Click to upload</p>
+                <p className="text-lg">Upload a file or drag it here</p>
               </div>
               <p className="mt-16 text-center text-gray-400">
                 Use high quality JPG, SVG, PNG, or GIF less than 20MB
