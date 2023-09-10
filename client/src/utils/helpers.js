@@ -24,3 +24,8 @@ export function formatTimestamp(timestamp) {
     });
   }
 }
+
+export function isExpired(exp) {
+  const currentTimestamp = Math.floor(Date.now() / 1000);
+  return exp < currentTimestamp;
+}
